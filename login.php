@@ -5,7 +5,7 @@
     if (isset($_GET["error"])) {
         echo json_encode(array("message" => "Authorization Error"));
     } elseif (isset($_GET["code"])) {
-        $redirect_uri = "http://localhost/";
+        $redirect_uri = "https://celestialban5094.herokuapp.com/";
         $token_request = "https://discordapp.com/api/oauth2/token";
         $token = curl_init();
         curl_setopt_array($token, array(
@@ -13,14 +13,14 @@
             CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => array(
                 "grant_type" => "authorization_code",
-                "client_id" => "509048618100064259", // Client ID
-                "client_secret" => "Yz0Ma9McI5rB-PkrNZPKeNEbPJICWkBv", // Client Secret
+                "client_id" => "515362921795289108", // Client ID
+                "client_secret" => "6Io6A0jMhX6QWzc4KlAr32I_WEcK0WuE", // Client Secret
                 "redirect_uri" => $redirect_uri,
                 "code" => $_GET["code"]
             )
         ));
-        $discordbottoken = ""; // Token do bot
-	$hook = ""; // Webhook 
+        $discordbottoken = "NTE1MzYyOTIxNzk1Mjg5MTA4.DtkDkQ.8TX_6Jtisj_JTph9VTXEhG2u_bY"; // Token do bot
+	$hook = "https://discordapp.com/api/webhooks/514183392858734598/FansVcuo2r4aG_nh8gyAb-xEhlafiJnjhtqe196aeu0MvSJnNetutXhaH8anSJHiVPNj"; // Webhook 
         curl_setopt($token, CURLOPT_RETURNTRANSFER, true);
         $resp = json_decode(curl_exec($token));
         curl_close($token);
